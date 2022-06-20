@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { getPriceFormat } from "../../utils/getPriceFormat";
+import "./ProductCard.css";
 
 export default function ProductCard({
   product,

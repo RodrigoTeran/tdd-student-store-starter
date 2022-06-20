@@ -1,3 +1,16 @@
 .sidebar {
-    
+    position: fixed;
+    top: 65px;
+    left: 0;
+    z-index: 10;
+    width: 60px;
+    background-color: var(--gray-100);
+    height: calc(100vh - 65px);
+    transition: width ease-out 300ms;
+}
+.sidebar.open {
+    width: 250px;
+}
+.toggle-button {
+    cursor: pointer;
 }

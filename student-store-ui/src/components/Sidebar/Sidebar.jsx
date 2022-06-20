@@ -16,7 +16,7 @@ export default function Sidebar({
   // TODO: styles should be wider than `350px` sidebar
   // TODO: noOpen -> it should only render the toggle button and shouldn't be wider than `150px`.
   return (
-    <section className="sidebar">
+    <section className={`sidebar ${isOpen && "open"}`}>
       <button onClick={handleOnToggle} className="toggle-button">
         Toggle
       </button>
