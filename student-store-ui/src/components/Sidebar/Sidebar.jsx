@@ -27,7 +27,13 @@ export default function Sidebar({
             products={products}
             shoppingCart={shoppingCart}
           />
-          <CheckoutForm />
+          <CheckoutForm
+              isOpen={isOpen}
+              shoppingCart={shoppingCart}
+              checkoutForm={checkoutForm}
+              handleOnCheckoutFormChange={handleOnCheckoutFormChange}
+              handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}
+          />
         </>
       )}
     </section>
