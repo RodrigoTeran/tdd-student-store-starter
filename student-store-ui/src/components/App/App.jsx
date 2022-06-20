@@ -20,7 +20,12 @@ export default function App() {
   const [isFetching, setIsFetching] = useState(false);
   const [error, setError] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-  const [shoppingCart, setShoppingCart] = useState(false);
+
+  // [{
+  //   itemId
+  //   quantity
+  // }]
+  const [shoppingCart, setShoppingCart] = useState([]);
   const [checkoutForm, setCheckoutForm] = useState(false);
 
   // category: "food"
@@ -87,6 +92,7 @@ export default function App() {
               path="/products/:productId"
               element={
                 <ProductDetail
+                  shoppingCart={shoppingCart}
                   handleAddItemToCart={handleAddItemToCart}
                   handleRemoveItemToCart={handleRemoveItemToCart}
                 />

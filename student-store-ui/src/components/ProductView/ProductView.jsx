@@ -11,6 +11,24 @@
 // price: 1.5
 // source: "https://world.openfoodfacts.org/cgi/product_image.pl?code=8964000090879&id=front_en"
 
-export default function ProductView({ product }) {
-  return <>{product && <div>{product.name}</div>}</>;
+// Components
+import ProductCard from "../ProductCard/ProductCard";
+
+export default function ProductView({
+  product,
+  productId,
+  quantity,
+  handleAddItemToCart,
+  handleRemoveItemToCart,
+}) {
+  return (
+    <>
+      {product && (
+        <div className="product-view">
+          <h1 className="product-id">Product #{productId}</h1>
+          <ProductCard product={product} showDescription={true} />
+        </div>
+      )}
+    </>
+  );
 }
