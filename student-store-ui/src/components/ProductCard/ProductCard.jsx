@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { getPriceFormat } from "../../utils/getPriceFormat";
 
 export default function ProductCard({
   product,
@@ -8,21 +9,10 @@ export default function ProductCard({
   handleRemoveItemToCart,
   showDescription,
 }) {
-  const getPrice = () => {
-    const intPart = parseInt(product.price).toString();
-    const auxFloatPart = (product.price - intPart).toFixed(2);
-    const floatPart = auxFloatPart.substring(
-      auxFloatPart.length - 2,
-      auxFloatPart.length
-    );
-
-    return `$${intPart}.${floatPart}`;
-  };
-
   return (
     <div className="product-card">
       <div className="product-name">{product.name}</div>
-      <div className="product-price">{getPrice()}</div>
+      <div className="product-price">{getPriceFormat(product.price)}</div>
       {showDescription && (
         <div className="product-description">{product.description}</div>
       )}

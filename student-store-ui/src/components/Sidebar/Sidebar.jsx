@@ -22,7 +22,11 @@ export default function Sidebar({
       </button>
       {isOpen && (
         <>
-          <ShoppingCart />
+          <ShoppingCart
+            isOpen={isOpen}
+            products={products}
+            shoppingCart={shoppingCart}
+          />
           <CheckoutForm />
         </>
       )}
