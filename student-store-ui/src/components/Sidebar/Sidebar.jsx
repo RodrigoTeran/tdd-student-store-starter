@@ -1,10 +1,31 @@
-import * as React from "react"
-import "./Sidebar.css"
+import * as React from "react";
+import "./Sidebar.css";
 
-export default function Sidebar() {
+import ShoppingCart from "../ShoppingCart/ShoppingCart";
+import CheckoutForm from "../CheckoutForm/CheckoutForm";
+
+export default function Sidebar({
+  isOpen,
+  shoppingCart,
+  products,
+  checkoutForm,
+  handleOnCheckoutFormChange,
+  handleOnSubmitCheckoutForm,
+  handleOnToggle,
+}) {
+  // TODO: styles should be wider than `350px` sidebar
+  // TODO: noOpen -> it should only render the toggle button and shouldn't be wider than `150px`.
   return (
     <section className="sidebar">
-      <p>Sidebar</p>
+      <button onClick={handleOnToggle} className="toggle-button">
+        Toggle
+      </button>
+      {isOpen && (
+        <>
+          <ShoppingCart />
+          <CheckoutForm />
+        </>
+      )}
     </section>
-  )
+  );
 }

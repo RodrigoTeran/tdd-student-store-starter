@@ -112,12 +112,27 @@ export default function App() {
     setShoppingCart(auxArray);
   };
 
+  const handleOnCheckoutFormChange = () => {};
+  const handleOnSubmitCheckoutForm = () => {};
+  
+  const handleOnToggle = () => {
+    setIsOpen(prev => !prev);
+  };
+
   return (
     <div className="app">
       <BrowserRouter basename="/">
         <main>
           <Navbar />
-          <Sidebar />
+          <Sidebar
+            isOpen={isOpen}
+            shoppingCart={shoppingCart}
+            products={products}
+            checkoutForm={checkoutForm}
+            handleOnCheckoutFormChange={handleOnCheckoutFormChange}
+            handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}
+            handleOnToggle={handleOnToggle}
+          />
           <Routes>
             <Route
               path="/"
