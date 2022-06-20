@@ -30,6 +30,7 @@ export default function ProductDetail({
         return shoppingCart[i].quantity;
       }
     }
+    return 0;
   };
 
   const loadData = async () => {

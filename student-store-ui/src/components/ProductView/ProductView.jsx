@@ -26,7 +26,14 @@ export default function ProductView({
       {product && (
         <div className="product-view">
           <h1 className="product-id">Product #{productId}</h1>
-          <ProductCard product={product} showDescription={true} />
+          <ProductCard
+            product={product}
+            showDescription={true}
+            productId={productId}
+            quantity={quantity}
+            handleAddItemToCart={handleAddItemToCart}
+            handleRemoveItemToCart={handleRemoveItemToCart}
+          />
         </div>
       )}
     </>

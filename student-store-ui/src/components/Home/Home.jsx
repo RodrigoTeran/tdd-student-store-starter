@@ -7,6 +7,7 @@ export default function Home({
   products = [],
   handleAddItemToCart = () => {},
   handleRemoveItemToCart = () => {},
+  shoppingCart
 }) {
   return (
     <div className="home">
@@ -15,6 +16,7 @@ export default function Home({
         products={products}
         handleAddItemToCart={handleAddItemToCart}
         handleRemoveItemToCart={handleRemoveItemToCart}
+        shoppingCart={shoppingCart}
       />
     </div>
   );

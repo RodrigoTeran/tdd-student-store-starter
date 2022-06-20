@@ -68,8 +68,49 @@ export default function App() {
   };
 
   // Handlers
-  const handleAddItemToCart = () => {};
-  const handleRemoveItemToCart = () => {};
+  const handleAddItemToCart = (productId) => {
+    // TODO: It should add the price of the product to the total price of the `shoppingCart`.
+    let auxArray = [];
+    let wasAdded = false;
+    for (let i = 0; i < shoppingCart.length; i++) {
+      if (shoppingCart[i].itemId != productId) {
+        auxArray.push(shoppingCart[i]);
+      } else {
+        auxArray.push({
+          itemId: productId,
+          quantity: shoppingCart[i].quantity + 1,
+        });
+        wasAdded = true;
+      }
+    }
+
+    if (!wasAdded) {
+      auxArray.push({
+        itemId: productId,
+        quantity: 1,
+      });
+    }
+
+    setShoppingCart(auxArray);
+  };
+
+  const handleRemoveItemToCart = (productId) => {
+    let auxArray = [];
+    for (let i = 0; i < shoppingCart.length; i++) {
+      if (shoppingCart[i].itemId != productId) {
+        auxArray.push(shoppingCart[i]);
+      } else {
+        if (shoppingCart[i].quantity - 1 > 0) {
+          auxArray.push({
+            itemId: productId,
+            quantity: shoppingCart[i].quantity - 1,
+          });
+        }
+      }
+    }
+
+    setShoppingCart(auxArray);
+  };
 
   return (
     <div className="app">
@@ -85,6 +126,7 @@ export default function App() {
                   products={products}
                   handleAddItemToCart={handleAddItemToCart}
                   handleRemoveItemToCart={handleRemoveItemToCart}
+                  shoppingCart={shoppingCart}
                 />
               }
             />
