@@ -1,4 +1,3 @@
-import {} from "react"
 import "./Navbar.css"
 import Logo from "../Logo/Logo"
 

@@ -31,6 +31,7 @@ export default function App() {
   // price: 1.5
   // source: "https://world.openfoodfacts.org/cgi/product_image.pl?code=8964000090879&id=front_en"
 
+  // Fetching
   useEffect(async () => {
     loadData();
   }, []);
@@ -51,12 +52,15 @@ export default function App() {
       setError(data.statusText);
     } else if (data.data.products.length == 0) {
       setError("Not products found");
-    }
-    else {
+    } else {
       // Everything ok
       setProducts(data.data.products);
     }
   };
+
+  // Handlers
+  const handleAddItemToCart = () => {};
+  const handleRemoveItemToCart = () => {};
 
   return (
     <div className="app">
@@ -65,7 +69,16 @@ export default function App() {
           <Navbar />
           <Sidebar />
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route
+              path="/"
+              element={
+                <Home
+                  products={products}
+                  handleAddItemToCart={handleAddItemToCart}
+                  handleRemoveItemToCart={handleRemoveItemToCart}
+                />
+              }
+            />
             <Route path="/products/:productId" element={<ProductDetail />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
