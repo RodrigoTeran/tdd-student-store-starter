@@ -11,7 +11,11 @@ export default function Home({
   return (
     <div className="home">
       <Hero />
-      <ProductGrid />
+      <ProductGrid
+        products={products}
+        handleAddItemToCart={handleAddItemToCart}
+        handleRemoveItemToCart={handleRemoveItemToCart}
+      />
     </div>
   );
 }
