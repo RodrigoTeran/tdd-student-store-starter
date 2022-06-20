@@ -38,23 +38,27 @@ export default function App() {
 
   const loadData = async () => {
     setIsFetching(true);
-    const data = await fetcher(
-      `https://codepath-store-api.herokuapp.com/store`
-    );
-    setIsFetching(false);
-    // config: {transitional: {…}, transformRequest: Array(1), transformResponse: Array(1), timeout: 0, adapter: ƒ, …}
-    // data: {products: Array(16)}
-    // headers: {content-length: '5667', content-type: 'application/json; charset=utf-8'}
-    // request: XMLHttpRequest {onreadystatechange: null, readyState: 4, timeout: 0, withCredentials: false, upload: XMLHttpRequestUpload, …}
-    // status: 200
-    // statusText: "OK"
-    if (data.statusText != "OK") {
-      setError(data.statusText);
-    } else if (data.data.products.length == 0) {
-      setError("Not products found");
-    } else {
-      // Everything ok
-      setProducts(data.data.products);
+    try {
+      const data = await fetcher(
+        `https://codepath-store-api.herokuapp.com/store`
+      );
+      setIsFetching(false);
+      // config: {transitional: {…}, transformRequest: Array(1), transformResponse: Array(1), timeout: 0, adapter: ƒ, …}
+      // data: {products: Array(16)}
+      // headers: {content-length: '5667', content-type: 'application/json; charset=utf-8'}
+      // request: XMLHttpRequest {onreadystatechange: null, readyState: 4, timeout: 0, withCredentials: false, upload: XMLHttpRequestUpload, …}
+      // status: 200
+      // statusText: "OK"
+      if (data.statusText != "OK") {
+        setError(data.statusText);
+      } else if (data.data.products.length == 0) {
+        setError("Not products found");
+      } else {
+        // Everything ok
+        setProducts(data.data.products);
+      }
+    } catch (error) {
+      setError("Server error");
     }
   };
 
@@ -79,7 +83,15 @@ export default function App() {
                 />
               }
             />
-            <Route path="/products/:productId" element={<ProductDetail />} />
+            <Route
+              path="/products/:productId"
+              element={
+                <ProductDetail
+                  handleAddItemToCart={handleAddItemToCart}
+                  handleRemoveItemToCart={handleRemoveItemToCart}
+                />
+              }
+            />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>

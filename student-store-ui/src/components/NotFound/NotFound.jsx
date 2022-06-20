@@ -1,10 +1,11 @@
-import * as React from "react"
-import styles from "./NotFound.module.css"
+import * as React from "react";
+import "./NotFound.css";
 
 export default function NotFound() {
+  // TODO
   return (
-    <div className={styles.notFound}>
+    <div className="">
       <p>Not found</p>
     </div>
-  )
+  );
 }

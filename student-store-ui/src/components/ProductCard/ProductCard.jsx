@@ -1,9 +1,10 @@
 export default function ProductCard({
-    showDescription
+    showDescription,
+    product
 }) {
     return (
         <div>
-
+            {product.name}
         </div>
     )
 }
