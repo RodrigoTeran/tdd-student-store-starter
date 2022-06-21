@@ -1,0 +1,13 @@
+.loader {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 75px;
+    height: 30px;
+}
+.loader div {
+    border-radius: 50%;
+    width: 13px;
+    height: 13px;
+    background-color: var(--lavender-300);
+}

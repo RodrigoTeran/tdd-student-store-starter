@@ -1,10 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 // Components
 import Navbar from "../Navbar/Navbar";
 import Sidebar from "../Sidebar/Sidebar";
+import Loader from "../Loader/Loader";
 
 // Pages
 import Home from "../Home/Home";
@@ -13,6 +15,31 @@ import NotFound from "../NotFound/NotFound";
 
 // Fetcher
 import { fetcher } from "../../utils/fetcher";
+
+const variantsLoader = {
+  exit: {
+    opacity: 0,
+    transition: { type: "tween", duration: 1, delay: 0.5 },
+  },
+  initial: {
+    opacity: 1,
+    transition: { type: "tween", duration: 1 },
+  },
+  animate: {
+    opacity: 1,
+    transition: { type: "tween", duration: 1 },
+  },
+};
+const variantsMain = {
+  initial: {
+    opacity: 0,
+    transition: { type: "tween", duration: 1 },
+  },
+  animate: {
+    opacity: 1,
+    transition: { type: "tween", duration: .5 },
+  },
+};
 
 export default function App() {
   // Products
@@ -95,50 +122,70 @@ export default function App() {
 
   const handleOnCheckoutFormChange = () => {};
   const handleOnSubmitCheckoutForm = () => {};
-  
+
   const handleOnToggle = () => {
-    setIsOpen(prev => !prev);
+    setIsOpen((prev) => !prev);
   };
 
   return (
     <div className="app">
       <BrowserRouter basename="/">
-        <main>
-          <Navbar />
-          <Sidebar
-            isOpen={isOpen}
-            shoppingCart={shoppingCart}
-            products={products}
-            checkoutForm={checkoutForm}
-            handleOnCheckoutFormChange={handleOnCheckoutFormChange}
-            handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}
-            handleOnToggle={handleOnToggle}
-          />
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <Home
-                  products={products}
-                  handleAddItemToCart={handleAddItemToCart}
-                  handleRemoveItemToCart={handleRemoveItemToCart}
-                  shoppingCart={shoppingCart}
+        <AnimatePresence exitBeforeEnter>
+          {isFetching ? (
+            <motion.div
+              variants={variantsLoader}
+              exit="exit"
+              key="loader-app"
+              animate="animate"
+              initial="initial"
+              className="loader-container"
+            >
+              <Loader />
+            </motion.div>
+          ) : (
+            <motion.main
+              variants={variantsMain}
+              exit="exit"
+              animate="animate"
+              initial="initial"
+            >
+              <Navbar />
+              <Sidebar
+                isOpen={isOpen}
+                shoppingCart={shoppingCart}
+                products={products}
+                checkoutForm={checkoutForm}
+                handleOnCheckoutFormChange={handleOnCheckoutFormChange}
+                handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}
+                handleOnToggle={handleOnToggle}
+              />
+              <Routes>
+                <Route
+                  path="/"
+                  element={
+                    <Home
+                      products={products}
+                      handleAddItemToCart={handleAddItemToCart}
+                      handleRemoveItemToCart={handleRemoveItemToCart}
+                      shoppingCart={shoppingCart}
+                    />
+                  }
                 />
-              }
-            />
-            <Route
-              path="/products/:productId"
-              element={
-                <ProductDetail
-                  shoppingCart={shoppingCart}
-                  handleAddItemToCart={handleAddItemToCart}
-                  handleRemoveItemToCart={handleRemoveItemToCart}
+                <Route
+                  path="/products/:productId"
+                  element={
+                    <ProductDetail
+                      shoppingCart={shoppingCart}
+                      handleAddItemToCart={handleAddItemToCart}
+                      handleRemoveItemToCart={handleRemoveItemToCart}
+                    />
+                  }
                 />
-              }
-            />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </main>
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </motion.main>
+          )}
+        </AnimatePresence>
       </BrowserRouter>
     </div>
   );
