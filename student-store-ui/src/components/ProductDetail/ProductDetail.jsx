@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "./ProductDetail.css";
 import { useParams } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
 
 // Fetcher
 import { fetcher } from "../../utils/fetcher";
@@ -8,6 +9,8 @@ import { fetcher } from "../../utils/fetcher";
 // Components
 import NotFound from "../NotFound/NotFound";
 import ProductView from "../ProductView/ProductView";
+import Loader from "../Loader/Loader";
+import { variantsLoader, variantsMain } from "../Loader/variants";
 
 export default function ProductDetail({
   handleAddItemToCart = () => {},
@@ -54,17 +57,41 @@ export default function ProductDetail({
 
   return (
     <div className="product-detail">
-      {isFetching && <h1 className="loading">Loading...</h1>}
-      {!isFetching && error == "" && (
-        <ProductView
-          product={product}
-          productId={productId}
-          handleAddItemToCart={handleAddItemToCart}
-          handleRemoveItemToCart={handleRemoveItemToCart}
-          quantity={getQuantity()}
-        />
-      )}
-      {error != "" && <NotFound />}
+      <AnimatePresence exitBeforeEnter>
+        {isFetching ? (
+          <motion.h1
+            variants={variantsLoader}
+            exit="exit"
+            key="loader-product"
+            animate="animate"
+            initial="initial"
+            className="loading"
+          >
+            <Loader />
+          </motion.h1>
+        ) : (
+          <>
+            {!isFetching && error == "" ? (
+              <motion.div
+                variants={variantsMain}
+                exit="exit"
+                animate="animate"
+                initial="initial"
+              >
+                <ProductView
+                  product={product}
+                  productId={productId}
+                  handleAddItemToCart={handleAddItemToCart}
+                  handleRemoveItemToCart={handleRemoveItemToCart}
+                  quantity={getQuantity()}
+                />
+              </motion.div>
+            ) : (
+              error != "" && <NotFound />
+            )}
+          </>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
