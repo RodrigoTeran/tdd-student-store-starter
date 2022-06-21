@@ -1,0 +1,32 @@
+.product-view {
+    padding: 0 35px 0 100px;
+    margin-top: 100px;
+}
+.product-view h1 {
+    font-size: 2rem;
+    color: var(--lavender-300);
+}
+.product-view-return {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    width: fit-content;
+    text-decoration: none;
+}
+.product-view-return svg {
+    fill: var(--gray-500);
+    width: 13px;
+    height: 13px;
+}
+@media (hover: hover) and (pointer: fine) {
+    .product-view-return:hover {
+        text-decoration: underline;
+    }
+}
+@media screen and (max-width: 450px) {
+    .product-view {
+        padding: 0 10px 0 70px;
+    }
+}

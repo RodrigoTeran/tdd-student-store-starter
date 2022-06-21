@@ -16,7 +16,7 @@ export default function Hero() {
       </div>
       <div className="hero-img-container">
         <img
-          src="/student_store_icon.18e5d61a.svg"
+          src="/hero.svg"
           className="hero-img"
           alt="Hero Img"
         />

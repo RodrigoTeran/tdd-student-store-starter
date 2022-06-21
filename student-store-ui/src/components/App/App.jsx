@@ -21,20 +21,8 @@ export default function App() {
   const [error, setError] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
-  // [{
-  //   itemId
-  //   quantity
-  // }]
   const [shoppingCart, setShoppingCart] = useState([]);
   const [checkoutForm, setCheckoutForm] = useState(false);
-
-  // category: "food"
-  // description: "No one knows what's in the powder that covers these snacks, but wow is it amazing!"
-  // id: 2
-  // image: "https://static.openfoodfacts.org/images/products/896/400/009/0879/front_en.14.full.jpg"
-  // name: "Flamin Hot Cheetos"
-  // price: 1.5
-  // source: "https://world.openfoodfacts.org/cgi/product_image.pl?code=8964000090879&id=front_en"
 
   // Fetching
   useEffect(async () => {
@@ -48,12 +36,6 @@ export default function App() {
         `https://codepath-store-api.herokuapp.com/store`
       );
       setIsFetching(false);
-      // config: {transitional: {…}, transformRequest: Array(1), transformResponse: Array(1), timeout: 0, adapter: ƒ, …}
-      // data: {products: Array(16)}
-      // headers: {content-length: '5667', content-type: 'application/json; charset=utf-8'}
-      // request: XMLHttpRequest {onreadystatechange: null, readyState: 4, timeout: 0, withCredentials: false, upload: XMLHttpRequestUpload, …}
-      // status: 200
-      // statusText: "OK"
       if (data.statusText != "OK") {
         setError(data.statusText);
       } else if (data.data.products.length == 0) {
@@ -69,7 +51,6 @@ export default function App() {
 
   // Handlers
   const handleAddItemToCart = (productId) => {
-    // TODO: It should add the price of the product to the total price of the `shoppingCart`.
     let auxArray = [];
     let wasAdded = false;
     for (let i = 0; i < shoppingCart.length; i++) {

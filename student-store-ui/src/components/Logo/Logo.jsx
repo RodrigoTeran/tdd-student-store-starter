@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
+import "./Logo.css";
 
-export default function Logo(){
-    return (
-        <div className="logo">
-            <Link to="/">
-                <img src="/codepath.f1b3e41a.svg" alt="CodePath Logo" />
-            </Link>
-        </div>
-    )
+export default function Logo() {
+  return (
+    <div className="logo">
+      <Link to="/" className="logo-link">
+        <img title="Go to Main Page" src="/logo.svg" alt="CodePath Logo" />
+        <h1>Student Store</h1>
+      </Link>
+    </div>
+  );
 }

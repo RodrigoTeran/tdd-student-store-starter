@@ -1,18 +1,7 @@
-// id: 2,
-// name: 'Flamin Hot Cheetos',
-// category: 'food',
-// image: 'https://static.openfoodfacts.org/images/products/896/400/009/0879/front_en.14.full.jpg',
-// source: 'https://world.openfoodfacts.org/cgi/product_image.pl?code=8964000090879&id=front_en',
-// category: "food"
-// description: "No one knows what's in the powder that covers these snacks, but wow is it amazing!"
-// id: 2
-// image: "https://static.openfoodfacts.org/images/products/896/400/009/0879/front_en.14.full.jpg"
-// name: "Flamin Hot Cheetos"
-// price: 1.5
-// source: "https://world.openfoodfacts.org/cgi/product_image.pl?code=8964000090879&id=front_en"
-
 // Components
 import ProductCard from "../ProductCard/ProductCard";
+import "./ProductView.css";
+import { Link } from "react-router-dom";
 
 export default function ProductView({
   product,
@@ -25,6 +14,12 @@ export default function ProductView({
     <>
       {product && (
         <div className="product-view">
+          <Link to="/" className="product-view-return">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+              <path d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z" />
+            </svg>
+            return
+          </Link>
           <h1 className="product-id">Product #{productId}</h1>
           <ProductCard
             product={product}

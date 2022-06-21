@@ -1,3 +1,7 @@
+import { motion } from "framer-motion";
+import { elementVariants } from "../Sidebar/variants";
+import "./CheckoutForm.css";
+
 export default function CheckoutForm({
   isOpen,
   shoppingCart,
@@ -6,7 +10,7 @@ export default function CheckoutForm({
   handleOnSubmitCheckoutForm,
 }) {
   return (
-    <div className="checkout-form">
+    <motion.div variants={elementVariants} className="checkout-form">
       <input
         value={checkoutForm.email}
         type="email"
@@ -21,12 +25,12 @@ export default function CheckoutForm({
         placeholder="Student Name"
         onChange={handleOnCheckoutFormChange}
       />
-      <button onclick={handleOnSubmitCheckoutForm} className="checkout-button">
+      <button onClick={handleOnSubmitCheckoutForm} className="checkout-button">
         Checkout
       </button>
 
       {/* TODO */}
       <div className="error"></div>
-    </div>
+    </motion.div>
   );
 }

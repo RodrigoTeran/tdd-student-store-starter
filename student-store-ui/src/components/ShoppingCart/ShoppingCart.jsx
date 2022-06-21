@@ -1,9 +1,12 @@
 import { Fragment } from "react";
 import { getPriceFormat } from "../../utils/getPriceFormat";
+import { motion } from "framer-motion";
+import { elementVariants } from "../Sidebar/variants";
+import "./ShoppingCart.css";
 
 const TAX_RATE = 1.0875;
 
-export default function ShoppingCart({ isOpen, products, shoppingCart }) {
+export default function ShoppingCart({ products, shoppingCart }) {
   const getSubTotal = () => {
     let subtotal = 0;
     for (let i = 0; i < shoppingCart.length; i++) {
@@ -14,9 +17,8 @@ export default function ShoppingCart({ isOpen, products, shoppingCart }) {
     return subtotal;
   };
 
-  // TODO: play with isOpen prop
   return (
-    <div className="shopping-cart">
+    <motion.div variants={elementVariants} className="shopping-cart">
       {/* Container div */}
       <div>
         {shoppingCart.length > 0 &&
@@ -36,10 +38,14 @@ export default function ShoppingCart({ isOpen, products, shoppingCart }) {
           </div>
         )}
       </div>
-      <div className="subtotal">{getPriceFormat(getSubTotal())}</div>
+      <div className="subtotal">
+        Subtotal:&nbsp;
+        {getPriceFormat(getSubTotal())}
+      </div>
       <div className="total-price">
+        Total price:&nbsp;
         {getPriceFormat(getSubTotal() * TAX_RATE)}
       </div>
-    </div>
+    </motion.div>
   );
 }

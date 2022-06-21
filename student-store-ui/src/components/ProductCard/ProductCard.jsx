@@ -25,15 +25,6 @@ export default function ProductCard({
       )}
       <div className="product-btns">
         <button
-          title="Add item"
-          onClick={() => {
-            handleAddItemToCart(productId);
-          }}
-          className="add"
-        >
-          +
-        </button>
-        <button
           title="Remove item"
           onClick={() => {
             handleRemoveItemToCart(productId);
@@ -41,6 +32,15 @@ export default function ProductCard({
           className="remove"
         >
           -
+        </button>
+        <button
+          title="Add item"
+          onClick={() => {
+            handleAddItemToCart(productId);
+          }}
+          className="add"
+        >
+          +
         </button>
       </div>
       {quantity > 0 && (

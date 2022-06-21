@@ -1,15 +1,14 @@
 // Components
 import { Fragment } from "react";
 import ProductCard from "../ProductCard/ProductCard";
-import "./ProductGrid.css"
+import "./ProductGrid.css";
 
 export default function ProductGrid({
   products = [],
   handleAddItemToCart = () => {},
   handleRemoveItemToCart = () => {},
-  shoppingCart
+  shoppingCart,
 }) {
-
   const getQuantity = (productId) => {
     for (let i = 0; i < shoppingCart.length; i++) {
       if (shoppingCart[i].itemId == productId) {

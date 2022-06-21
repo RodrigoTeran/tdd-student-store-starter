@@ -1,0 +1,15 @@
+.shopping-cart {
+    margin-bottom: 30px;
+}
+.notification {
+    text-align: center;
+    font-weight: bold;
+    color: var(--gray-500);
+    margin-bottom: 20px;
+}
+.subtotal {
+    color: var(--lavender-500);
+}
+.total-price {
+    color: var(--lavender-500);
+}
