@@ -13,10 +13,13 @@ body {
 
 :root {
   --black-100: #000;
+  --black-100-a-40: #00000033;
   --white-100: #fff;
 
   --lavender-100: #a0a5f1;
   --lavender-200: #b2b6f1;
+  --lavender-300: #767ff8;
+  --lavender-400: #e9ebff;
 
   --gray-100: #f8f9f6;
   --gray-200: #e3e8ef;

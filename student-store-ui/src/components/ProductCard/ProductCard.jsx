@@ -12,33 +12,45 @@ export default function ProductCard({
 }) {
   return (
     <div className="product-card">
+      <div className="media" title={`Go to ${product.name}`}>
+        <Link to={`/products/${productId}`}>
+          <img src={product.image} alt={product.name} />
+        </Link>
+      </div>
+
       <div className="product-name">{product.name}</div>
       <div className="product-price">{getPriceFormat(product.price)}</div>
       {showDescription && (
         <div className="product-description">{product.description}</div>
       )}
-      <div className="media">
-        <Link to={`/products/${productId}`}>
-          <img src={product.image} alt={product.name} />
-        </Link>
+      <div className="product-btns">
+        <button
+          title="Add item"
+          onClick={() => {
+            handleAddItemToCart(productId);
+          }}
+          className="add"
+        >
+          +
+        </button>
+        <button
+          title="Remove item"
+          onClick={() => {
+            handleRemoveItemToCart(productId);
+          }}
+          className="remove"
+        >
+          -
+        </button>
       </div>
-      <button
-        onClick={() => {
-          handleAddItemToCart(productId);
-        }}
-        className="add"
-      >
-        Add
-      </button>
-      <button
-        onClick={() => {
-          handleRemoveItemToCart(productId);
-        }}
-        className="remove"
-      >
-        Remove
-      </button>
-      {quantity > 0 && <div className="product-quantity">{quantity}</div>}
+      {quantity > 0 && (
+        <div
+          title={`You have ${quantity} ${product.name} in your shopping cart!`}
+          className="product-quantity"
+        >
+          {quantity}
+        </div>
+      )}
     </div>
   );
 }

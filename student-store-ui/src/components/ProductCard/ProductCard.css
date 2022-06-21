@@ -1,28 +1,96 @@
 .product-card {
     width: 100%;
-    height: 400px;
-    background-color: var(--lavender-100);
-    border-radius: 5px;
-    padding: 10px;
+    height: 330px;
+    border-radius: 10px;
     color: var(--white-100);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
     gap: 10px;
-    cursor: pointer;
+    background-color: var(--gray-100);
+    padding: 20px;
+    position: relative;
+    z-index: 0;
+}
+.product-card::before {
+    content: "";
+    position: absolute;
+    background-color: var(--lavender-100);
+    top: 0;
+    left: 0;
+    height: 120px;
+    width: 100%;
+    z-index: -1;
+    border-radius: 10px 10px 0 0;
 }
 .media {
-    width: 100%;
-    height: 200px;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    border: 5px solid var(--gray-100);
+    background-color: var(--white-100);
 }
 .media img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     background-color: var(--lavender-200);
+    cursor: pointer;
+    transition: opacity ease-out 150ms;
 }
 .product-name {
+    color: var(--gray-500);
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.3rem;
     font-weight: bold;
-    font-size: 1.2rem;
+}
+.product-price {
+    color: var(--lavender-300);
+    text-align: center;
+    margin-top: 5px;
+}
+.product-btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+.add, .remove {
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: var(--lavender-100);
+    color: var(--white-100);
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color ease-out 150ms;
+}
+.add {
+    border-radius: 15px 0 0 15px;
+}
+.remove {
+    border-radius: 0 15px 15px 0;
+}
+.product-quantity {
+    color: var(--black-100);
+    position: absolute;
+    background-color: var(--lavender-400);
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px 0 10px 0;
+    top: 2.5px;
+    left: 2.5px;
+    cursor: default;
+}
+@media (hover:hover) and (pointer:fine) {
+    .add:hover, .remove:hover {
+        background-color: var(--lavender-200);   
+    }
+    .media img:hover {
+        opacity: .75;
+    }
 }
