@@ -1,6 +1,7 @@
 // Components
 import { Fragment } from "react";
 import ProductCard from "../ProductCard/ProductCard";
+import Filter from "../Filter/Filter";
 import "./ProductGrid.css";
 
 export default function ProductGrid({
@@ -8,6 +9,8 @@ export default function ProductGrid({
   handleAddItemToCart = () => {},
   handleRemoveItemToCart = () => {},
   shoppingCart,
+  productsPerm = [],
+  setProducts,
 }) {
   const getQuantity = (productId) => {
     for (let i = 0; i < shoppingCart.length; i++) {
@@ -21,6 +24,11 @@ export default function ProductGrid({
   return (
     <div className="product-grid" id="Buy">
       <div className="product-grid-title">Selling products</div>
+      <Filter
+        productsPerm={productsPerm}
+        setProducts={setProducts}
+        products={products}
+      />
       <div className="product-grid-container">
         {products.map((product, index) => {
           return (

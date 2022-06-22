@@ -10,10 +10,12 @@ import AboutUs from "../AboutUs/AboutUs";
 import ContactUs from "../ContactUs/ContactUs";
 
 export default function Home({
-  products = [],
   handleAddItemToCart = () => {},
   handleRemoveItemToCart = () => {},
   shoppingCart,
+  products = [],
+  productsPerm = [],
+  setProducts
 }) {
   return (
     <motion.div
@@ -29,6 +31,8 @@ export default function Home({
         handleAddItemToCart={handleAddItemToCart}
         handleRemoveItemToCart={handleRemoveItemToCart}
         shoppingCart={shoppingCart}
+        productsPerm={productsPerm}
+        setProducts={setProducts}
       />
       <AboutUs />
       <ContactUs />

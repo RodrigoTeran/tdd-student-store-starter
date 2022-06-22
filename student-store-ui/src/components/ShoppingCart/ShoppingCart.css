@@ -10,16 +10,45 @@
 .subtotal {
     color: var(--lavender-500);
 }
+.taxes {
+    color: var(--lavender-500);
+    margin-bottom: 10px;
+}
 .total-price {
     color: var(--lavender-500);
 }
+.cart-product-price {
+    color: var(--lavender-500);
+    width: calc(100% - 120px - 30px);
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.cart-product-name {
+    width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.header {
+    font-weight: bold;
+    margin-bottom: 5px;
+    padding-right: 5px;
+}
 .cart-product-item {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
+    width: 100%;
 }
 .cart-product-quantity {
-    color: var(--gray-400);
+    color: var(--gray-500);
+    width: 30px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .shopping-cart-title {
     font-size: 1.2rem;

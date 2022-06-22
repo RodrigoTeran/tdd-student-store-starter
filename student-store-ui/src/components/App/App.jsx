@@ -19,6 +19,7 @@ import { fetcher } from "../../utils/fetcher";
 
 export default function App() {
   // Products
+  const [productsPerm, setProductsPerm] = useState([]);
   const [products, setProducts] = useState([]);
   const [isFetching, setIsFetching] = useState(false);
   const [isFetchingCheckoutForm, setIsFetchingCheckoutForm] = useState(false);
@@ -51,6 +52,7 @@ export default function App() {
       } else {
         // Everything ok
         setProducts(data.data.products);
+        setProductsPerm(data.data.products);
       }
     } catch (error) {
       setError("Server error");
@@ -133,7 +135,6 @@ export default function App() {
           shoppingCart,
         }
       );
-      console.log(data);
       setIsFetchingCheckoutForm(false);
       if (data.statusText != "Created") {
         setError("Server error");
@@ -202,6 +203,8 @@ export default function App() {
                     element={
                       <Home
                         products={products}
+                        productsPerm={productsPerm}
+                        setProducts={setProducts}
                         handleAddItemToCart={handleAddItemToCart}
                         handleRemoveItemToCart={handleRemoveItemToCart}
                         shoppingCart={shoppingCart}
