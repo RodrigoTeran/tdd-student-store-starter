@@ -24,3 +24,11 @@
         background-color: var(--lavender-100);
     }
 }
+.error {
+    color: var(--warning-100);
+    text-align: center;
+}
+.success {
+    color: var(--success-100);
+    text-align: center;
+}

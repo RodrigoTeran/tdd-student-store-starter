@@ -23,6 +23,7 @@ export default function App() {
   const [isFetching, setIsFetching] = useState(false);
   const [isFetchingCheckoutForm, setIsFetchingCheckoutForm] = useState(false);
   const [error, setError] = useState("");
+  const [successMsg, setSuccessMsg] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
   const [shoppingCart, setShoppingCart] = useState([]);
@@ -112,6 +113,17 @@ export default function App() {
   const handleOnSubmitCheckoutForm = async () => {
     setIsFetchingCheckoutForm(true);
     try {
+      if (checkoutForm.email == "" || checkoutForm.name == "") {
+        setError("You need to complete the information!");
+        setIsFetchingCheckoutForm(false);
+        return;
+      }
+      if (shoppingCart.length == 0) {
+        setError("You need to select at least 1 item!");
+        setIsFetchingCheckoutForm(false);
+        return;
+      }
+
       const data = await fetcher(
         `https://codepath-store-api.herokuapp.com/store`,
         "post",
@@ -124,8 +136,21 @@ export default function App() {
       console.log(data);
       setIsFetchingCheckoutForm(false);
       if (data.statusText != "Created") {
-        console.log("Error");
-      };
+        setError("Server error");
+        setSuccessMsg("");
+        return;
+      }
+      setError("");
+      setSuccessMsg("Success!");
+
+      // Empty shopping cart
+      setShoppingCart([]);
+
+      // Reset checkoutForm
+      setCheckoutForm({
+        email: "",
+        name: "",
+      });
     } catch (error) {
       setError("Server error");
     }
@@ -167,6 +192,8 @@ export default function App() {
                 handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}
                 handleOnToggle={handleOnToggle}
                 isFetchingCheckoutForm={isFetchingCheckoutForm}
+                error={error}
+                successMsg={successMsg}
               />
               <AnimatePresence exitBeforeEnter>
                 <Routes>

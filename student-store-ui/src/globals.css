@@ -36,6 +36,9 @@ body {
   --gray-700: #cbd5e0;
   --gray-800: #a0aec0;
   --gray-900: #f8fafc;
+
+  --warning-100: #D12828;
+  --success-100: #26572A;
 }
 
 html {

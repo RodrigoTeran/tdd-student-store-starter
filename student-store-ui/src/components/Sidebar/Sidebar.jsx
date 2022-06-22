@@ -18,6 +18,8 @@ export default function Sidebar({
   handleOnSubmitCheckoutForm,
   handleOnToggle,
   isFetchingCheckoutForm,
+  error,
+  successMsg
 }) {
   return (
     <section className={`sidebar ${isOpen && "open"}`}>
@@ -51,6 +53,8 @@ export default function Sidebar({
               checkoutForm={checkoutForm}
               handleOnCheckoutFormChange={handleOnCheckoutFormChange}
               handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}
+              error={error}
+              successMsg={successMsg}
             />
           </motion.div>
         ) : isFetchingCheckoutForm && isOpen ? (

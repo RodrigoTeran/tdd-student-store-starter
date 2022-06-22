@@ -6,6 +6,8 @@ export default function CheckoutForm({
   checkoutForm,
   handleOnCheckoutFormChange,
   handleOnSubmitCheckoutForm,
+  error,
+  successMsg,
 }) {
   return (
     <motion.div variants={elementVariants} className="checkout-form">
@@ -30,9 +32,8 @@ export default function CheckoutForm({
       <button onClick={handleOnSubmitCheckoutForm} className="checkout-button">
         Checkout
       </button>
-
-      {/* TODO */}
-      <div className="error"></div>
+      {error != "" && <div className="error">{error}</div>}
+      {successMsg != "" && <div className="success">{successMsg}</div>}
     </motion.div>
   );
 }
