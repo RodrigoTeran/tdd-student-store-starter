@@ -56,7 +56,13 @@ export default function ProductDetail({
   };
 
   return (
-    <div className="product-detail">
+    <motion.div
+      variants={variantsMain}
+      exit="exit"
+      animate="animate"
+      initial="initial"
+      className="product-detail"
+    >
       <AnimatePresence exitBeforeEnter>
         {isFetching ? (
           <motion.h1
@@ -92,6 +98,6 @@ export default function ProductDetail({
           </>
         )}
       </AnimatePresence>
-    </div>
+    </motion.div>
   );
 }

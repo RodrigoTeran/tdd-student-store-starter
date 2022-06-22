@@ -21,11 +21,15 @@ export default function App() {
   // Products
   const [products, setProducts] = useState([]);
   const [isFetching, setIsFetching] = useState(false);
+  const [isFetchingCheckoutForm, setIsFetchingCheckoutForm] = useState(false);
   const [error, setError] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
   const [shoppingCart, setShoppingCart] = useState([]);
-  const [checkoutForm, setCheckoutForm] = useState(false);
+  const [checkoutForm, setCheckoutForm] = useState({
+    email: "",
+    name: "",
+  });
 
   // Fetching
   useEffect(async () => {
@@ -96,8 +100,36 @@ export default function App() {
     setShoppingCart(auxArray);
   };
 
-  const handleOnCheckoutFormChange = () => {};
-  const handleOnSubmitCheckoutForm = () => {};
+  const handleOnCheckoutFormChange = (name, value) => {
+    const prev = checkoutForm;
+    const _new = {
+      ...prev,
+      [name]: value,
+    };
+
+    setCheckoutForm(_new);
+  };
+  const handleOnSubmitCheckoutForm = async () => {
+    setIsFetchingCheckoutForm(true);
+    try {
+      const data = await fetcher(
+        `https://codepath-store-api.herokuapp.com/store`,
+        "post",
+        {},
+        {
+          user: checkoutForm,
+          shoppingCart,
+        }
+      );
+      console.log(data);
+      setIsFetchingCheckoutForm(false);
+      if (data.statusText != "Created") {
+        console.log("Error");
+      };
+    } catch (error) {
+      setError("Server error");
+    }
+  };
 
   const handleOnToggle = () => {
     setIsOpen((prev) => !prev);
@@ -134,6 +166,7 @@ export default function App() {
                 handleOnCheckoutFormChange={handleOnCheckoutFormChange}
                 handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}
                 handleOnToggle={handleOnToggle}
+                isFetchingCheckoutForm={isFetchingCheckoutForm}
               />
               <AnimatePresence exitBeforeEnter>
                 <Routes>

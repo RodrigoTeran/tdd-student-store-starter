@@ -1,9 +1,13 @@
 import * as React from "react";
 import "./Home.css";
-import Hero from "../Hero/Hero";
-import ProductGrid from "../ProductGrid/ProductGrid";
 import { motion } from "framer-motion";
 import { variantsMain } from "../Loader/variants";
+
+// Components
+import Hero from "../Hero/Hero";
+import ProductGrid from "../ProductGrid/ProductGrid";
+import AboutUs from "../AboutUs/AboutUs";
+import ContactUs from "../ContactUs/ContactUs";
 
 export default function Home({
   products = [],
@@ -26,6 +30,8 @@ export default function Home({
         handleRemoveItemToCart={handleRemoveItemToCart}
         shoppingCart={shoppingCart}
       />
+      <AboutUs />
+      <ContactUs />
     </motion.div>
   );
 }

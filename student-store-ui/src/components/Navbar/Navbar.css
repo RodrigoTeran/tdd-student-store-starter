@@ -1,7 +1,7 @@
 .navbar {
     width: 100vw;
     height: 65px;
-    background-color: var(--gray-100);
+    background-color: var(--white-100-a-80);
     position: fixed;
     top: 0;
     left: 0;
@@ -10,5 +10,97 @@
 
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
+}
+.navbar-links {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    width: calc(100% - 176px);
+    transition: left ease-out 300ms;
+}
+.navbar-links a {
+    color: var(--gray-500);
+    cursor: pointer;
+    transition: color ease-out 150ms;
+    text-decoration: none;
+    position: relative;
+}
+.navbar-links a::after {
+    content: "";
+    width: 0;
+    height: 3px;
+    background-color: var(--lavender-500);
+    border-radius: 5px;
+    left: 50%;
+    bottom: -3px;
+    position: absolute;
+    z-index: 1;
+    transition: width ease-out 150ms, left ease-out 150ms;
+}
+@media (hover: hover) and (pointer: fine) {
+    .navbar-links a:hover {
+        color: var(--lavender-500);
+    }
+    .navbar-links a:hover::after {
+        left: 0;
+        width: 100%;
+    }
+}
+.hamburger {
+    visibility: hidden;
+    opacity: 0;
+    cursor: pointer;
+    position: absolute;
+    z-index: 1;
+    right: 50px;
+    top: calc(50% / 15px);
+    border-radius: 0;
+    width: 35px;
+    height: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: visibility ease-out 300ms, opacity ease-out 300ms;
+    background-color: transparent;
+}
+.hamburger div {
+    border-radius: 4px;
+    background-color: var(--lavender-500);
+    height: 4px;
+    width: 100%;
+    transition: transform ease-out 300ms;
+}
+@media screen and (max-width: 780px) {
+    .navbar-links {
+        position: fixed;
+        left: 100vw;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        flex-direction: column;
+        align-items: center;
+        background-color: var(--white-100);
+    }
+    .navbar-links.open {
+        left: 0;
+    }
+    .hamburger {
+        visibility: visible;
+        opacity: 1;
+    }
+    .hamburger div {
+        visibility: visible;
+        opacity: 1;
+    }
+    /* open */
+    .hamburger.open div:nth-child(1) {
+        transform: translateY(10.5px) rotateZ(45deg); /* half height hamburger minus half me */
+    }
+    .hamburger.open div:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.open div:nth-child(3) {
+        transform: translateY(-10.5px) rotateZ(-45deg); /* half height hamburger minus half me */
+    }
 }

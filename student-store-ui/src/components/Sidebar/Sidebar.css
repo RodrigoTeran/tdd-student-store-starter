@@ -4,7 +4,7 @@
     left: 0;
     z-index: 10;
     width: 60px;
-    background-color: var(--lavender-400);
+    background-color: var(--lavender-600);
     height: calc(100vh - 65px);
     transition: width ease-out 300ms;
     padding-top: 20px;
@@ -32,4 +32,9 @@
 }
 .sidebar-wrapper {
     padding: 20px;
+}
+.sidebar-loader-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
 }

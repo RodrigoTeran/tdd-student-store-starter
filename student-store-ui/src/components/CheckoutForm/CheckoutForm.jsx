@@ -3,8 +3,6 @@ import { elementVariants } from "../Sidebar/variants";
 import "./CheckoutForm.css";
 
 export default function CheckoutForm({
-  isOpen,
-  shoppingCart,
   checkoutForm,
   handleOnCheckoutFormChange,
   handleOnSubmitCheckoutForm,
@@ -16,14 +14,18 @@ export default function CheckoutForm({
         type="email"
         name="email"
         placeholder="student@codepath.org"
-        onChange={handleOnCheckoutFormChange}
+        onChange={(e) => {
+          handleOnCheckoutFormChange("email", e.target.value);
+        }}
       />
       <input
         value={checkoutForm.name}
         type="text"
         name="name"
         placeholder="Student Name"
-        onChange={handleOnCheckoutFormChange}
+        onChange={(e) => {
+          handleOnCheckoutFormChange("name", e.target.value);
+        }}
       />
       <button onClick={handleOnSubmitCheckoutForm} className="checkout-button">
         Checkout

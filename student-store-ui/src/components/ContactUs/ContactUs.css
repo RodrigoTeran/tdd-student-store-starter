@@ -1,0 +1,13 @@
+.contact-us {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 50px;
+    padding-top: 100px;
+    
+}
+.contact-us-titles {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--gray-300);
+}

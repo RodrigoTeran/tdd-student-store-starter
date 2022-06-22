@@ -19,21 +19,24 @@ export default function ProductGrid({
   };
 
   return (
-    <div className="product-grid">
-      {products.map((product, index) => {
-        return (
-          <Fragment key={index}>
-            <ProductCard
-              product={product}
-              showDescription={false}
-              handleAddItemToCart={handleAddItemToCart}
-              handleRemoveItemToCart={handleRemoveItemToCart}
-              productId={product.id}
-              quantity={getQuantity(product.id)}
-            />
-          </Fragment>
-        );
-      })}
+    <div className="product-grid" id="Buy">
+      <div className="product-grid-title">Selling products</div>
+      <div className="product-grid-container">
+        {products.map((product, index) => {
+          return (
+            <Fragment key={index}>
+              <ProductCard
+                product={product}
+                showDescription={false}
+                handleAddItemToCart={handleAddItemToCart}
+                handleRemoveItemToCart={handleRemoveItemToCart}
+                productId={product.id}
+                quantity={getQuantity(product.id)}
+              />
+            </Fragment>
+          );
+        })}
+      </div>
     </div>
   );
 }

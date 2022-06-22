@@ -1,3 +1,18 @@
 .notFound {
-    background-color: gold;
+    padding: 0 35px 0 100px;
+    height: 100vh;
+    margin: 0;
+    width: 100vw;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+.notFound img {
+    width: 100%;
+    max-width: 500px;
+}
+@media screen and (max-width: 450px) {
+    .notFound {
+        padding: 0 10px 0 70px;
+    }
 }

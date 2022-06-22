@@ -6,6 +6,8 @@ import { containerVariants } from "./variants";
 
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
 import CheckoutForm from "../CheckoutForm/CheckoutForm";
+import Loader from "../Loader/Loader";
+import { variantsLoader } from "../Loader/variants";
 
 export default function Sidebar({
   isOpen,
@@ -15,11 +17,12 @@ export default function Sidebar({
   handleOnCheckoutFormChange,
   handleOnSubmitCheckoutForm,
   handleOnToggle,
+  isFetchingCheckoutForm,
 }) {
   return (
     <section className={`sidebar ${isOpen && "open"}`}>
       <button
-        title="Toggle Sidebar"
+        title="Toggle checkout form"
         onClick={handleOnToggle}
         className="toggle-button"
       >
@@ -28,7 +31,7 @@ export default function Sidebar({
         </svg>
       </button>
       <AnimatePresence exitBeforeEnter>
-        {isOpen ? (
+        {isOpen && !isFetchingCheckoutForm ? (
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -49,6 +52,16 @@ export default function Sidebar({
               handleOnCheckoutFormChange={handleOnCheckoutFormChange}
               handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}
             />
+          </motion.div>
+        ) : isFetchingCheckoutForm && isOpen ? (
+          <motion.div
+            variants={variantsLoader}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            className="sidebar-loader-wrapper"
+          >
+            <Loader />
           </motion.div>
         ) : null}
       </AnimatePresence>

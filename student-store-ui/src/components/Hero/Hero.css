@@ -5,7 +5,7 @@
     margin: 0 auto;
     margin-top: 65px;
     padding: 0 20px;
-    height: 500px;
+    height: calc(100vh - 65px - 100px);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -44,7 +44,8 @@
         flex-direction: column;
         height: auto;
     }
-    .intro, .intro-des {
+    .intro,
+    .intro-des {
         text-align: center;
         display: block;
     }
@@ -66,7 +67,7 @@
 }
 @media screen and (max-width: 450px) {
     .hero {
-      padding: 0;
+        padding: 0;
     }
     .intro-des {
         padding: 0 30px;
@@ -74,4 +75,4 @@
     .hero-img {
         min-width: 250px;
     }
-  }
+}

@@ -2,7 +2,15 @@
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    
+    padding-top: 100px;
+}
+.product-grid-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--gray-300);
+}
+.product-grid-container {
+    width: 100%;    
     display: grid;
     grid-template-columns: repeat(auto-fill, 230px);
     justify-content: space-between;
@@ -10,7 +18,7 @@
     margin-top: 50px;
 }
 @media screen and (max-width: 730px) {
-    .product-grid {
+    .product-grid-container {
         justify-content: center;
     }   
 }
