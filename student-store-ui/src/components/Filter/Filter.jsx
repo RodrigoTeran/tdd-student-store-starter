@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Filter.css";
 
 export default function Filter({
@@ -48,6 +48,10 @@ export default function Filter({
     aux = search(products, text);
     setProducts(aux);
   };
+
+  useEffect(()=> {
+    handleCategorieChange("all");
+  }, []);
 
   return (
     <div className="filter">
