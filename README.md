@@ -4,7 +4,7 @@
 
 Selling merchandise in the modern era requires digital solutions. For this project, you'll be tasked with designing and constructing an online student store for the College of Codepath. The application entails a frontend user interface for potential customers to peruse the goods, and a backend API to handle data management. The API will be built with Node and Express and the UI will be built with React.
 
-// Include your gif here
+<img src="student-store-ui/public/gif.gif" alt="Walkthrough" width="300px">
 
 ### Application Features
 
@@ -285,20 +285,22 @@ The following specifications were met on the Express backend and the React front
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-Add your response here
+I really felt super prepared to complete my project because I learnt everything in my labs. For example, the transitions, the prop drilling, managing state, etc... I managed to complete all the features.
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
   
-Add your response here
+I would have added more interactivity on the card-product-element... for example a pop up to see the product's image bigger.
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-Add your response here
+In this first stage, everything went well, so in my case I am really satisfied with the result. I saw many other projects, and I would only wish to have added more interactivity to the website.
 
 ### Open-source libraries used
 
-- Add any links to open-source libraries used in your project.
+- https://www.framer.com/motion/
+- https://reactjs.org/
+- https://www.npmjs.com/package/react-router-hash-link
 
 ### Shout out
 
-Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
+Thanks, Phineas Kibbey and Yilika Loufoua
