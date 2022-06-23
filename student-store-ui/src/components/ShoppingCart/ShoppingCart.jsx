@@ -27,7 +27,7 @@ export default function ShoppingCart({ products, shoppingCart }) {
     let subtotal = 0;
     for (let i = 0; i < shoppingCart.length; i++) {
       subtotal +=
-        products[shoppingCart[i].itemId].price * shoppingCart[i].quantity;
+        products[shoppingCart[i].itemId - 1].price * shoppingCart[i].quantity;
     }
 
     return subtotal;
