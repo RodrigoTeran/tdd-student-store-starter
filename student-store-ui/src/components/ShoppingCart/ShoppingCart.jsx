@@ -50,10 +50,10 @@ export default function ShoppingCart({ products, shoppingCart }) {
                 return (
                   <Fragment key={index}>
                     <TableElement
-                      name={products[item.itemId].name}
+                      name={products[item.itemId - 1].name}
                       quantity={item.quantity}
                       price={getPriceFormat(
-                        item.quantity * products[item.itemId].price
+                        item.quantity * products[item.itemId - 1].price
                       )}
                     />
                   </Fragment>
