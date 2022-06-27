@@ -145,5 +145,24 @@
       "price": 999.99
     }
   ],
-  "purchases": []
+  "purchases": [
+    {
+      "id": 1,
+      "name": "Rodrigo Teran",
+      "email": "rodrigoteran@fb.com",
+      "order": [
+        {
+          "itemId": 1,
+          "quantity": 4
+        },
+        {
+          "itemId": 6,
+          "quantity": 3
+        }
+      ],
+      "total": 69.52387499999999,
+      "createdAt": "Mon Jun 27 2022 16:28:23 GMT-0700 (Pacific Daylight Time)",
+      "receipt": "Receipt #1, by user: Rodrigo Teran. Total price: $69.52387499999999"
+    }
+  ]
 }
