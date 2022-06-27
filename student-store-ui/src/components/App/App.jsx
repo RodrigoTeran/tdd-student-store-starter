@@ -42,10 +42,10 @@ export default function App() {
     setIsFetching(true);
     try {
       const data = await fetcher(
-        `https://codepath-store-api.herokuapp.com/store`
+        `${process.env.API_URL}/store`
       );
       setIsFetching(false);
-      if (data.statusText != "OK") {
+      if (data.status != 200) {
         setError(data.statusText);
       } else if (data.data.products.length == 0) {
         setError("Not products found");
@@ -127,7 +127,7 @@ export default function App() {
       }
 
       const data = await fetcher(
-        `https://codepath-store-api.herokuapp.com/store`,
+        `${process.env.API_URL}/store`,
         "post",
         {},
         {
@@ -135,8 +135,9 @@ export default function App() {
           shoppingCart,
         }
       );
+
       setIsFetchingCheckoutForm(false);
-      if (data.statusText != "Created") {
+      if (data.status != 201) {
         setError("Server error");
         setSuccessMsg("");
         return;

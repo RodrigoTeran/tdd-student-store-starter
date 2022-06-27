@@ -40,7 +40,7 @@ export default function ProductDetail({
     setIsFetching(true);
     try {
       const data = await fetcher(
-        `https://codepath-store-api.herokuapp.com/store/${productId}`
+        `${process.env.API_URL}/store/${productId}`
       );
 
       setIsFetching(false);
