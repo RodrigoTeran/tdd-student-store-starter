@@ -1,11 +1,15 @@
+const { storage } = require("../data/storage");
+
 class Store {
-    listProducts() {
-
+    static listProducts() {
+        return storage.db;
     }
-    fetchProduct(id) {
-
+    static fetchProduct(id) {
+        return storage.get("products").find({ id: Number(id) }).value();
     }
-    createOrder(order) {
-        
+    static createOrder(purchase) {
+        return storage.get("purchases").push(purchase).write();
     }
 }
+
+module.exports = Store;
