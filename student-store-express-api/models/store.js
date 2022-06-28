@@ -4,6 +4,7 @@ const { BadRequestError } = require("../utils/errors");
 const { storage } = require("../data/storage");
 
 class Store {
+    // Core
     static listProducts() {
         try {
             return storage.get("products").value();
@@ -54,6 +55,23 @@ class Store {
 
             storage.get("purchases").push(purchase).write();
             return purchase;
+        } catch (error) {
+            throw new BadRequestError(error);
+        }
+    }
+
+    // Stretch
+    static listOrders() {
+        try {
+            return storage.get("purchases").value();
+        } catch (error) {
+            throw new BadRequestError(error);
+        }
+    }
+
+    static fetchOrder(id) {
+        try {
+            return storage.get("purchases").find({ id: Number(id) }).value();
         } catch (error) {
             throw new BadRequestError(error);
         }
