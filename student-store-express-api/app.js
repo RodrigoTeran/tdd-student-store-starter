@@ -2,6 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
 const app = express();
+const { NotFoundError } = require("./utils/errors");
 
 app.use(morgan("tiny"))
 app.use(express.json());
@@ -24,5 +25,21 @@ app.get("/", (_req, res) => {
 // Routes
 app.use("/store", require("./routes/store.routes"));
 
+// Error handlers
+app.use((_req, _res, next) => {
+    return next(new NotFoundError());
+});
+
+app.use((error, _req, res, _next) => {
+    const status = error.status || 500;
+    const message = error.message || "Something wen't wrong in the application";
+
+    return res.status(status).json({
+        error: {
+            status,
+            message
+        }
+    });
+});
 
 module.exports = app;
