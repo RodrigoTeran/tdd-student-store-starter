@@ -40,7 +40,7 @@ export default function ProductDetail({
     setIsFetching(true);
     try {
       const data = await fetcher(
-        `${process.env.API_URL}/store/${productId}`
+        `${import.meta.env.VITE_API_URL}/store/${productId}`
       );
 
       setIsFetching(false);

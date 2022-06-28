@@ -1,9 +1,12 @@
 import axios from "axios";
 
 export const fetcher = async (
-    url, 
+    url,
     method = "get",
-    headers = {},
+    headers = {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+    },
     ownConfig = false
 ) => {
     const config = ownConfig ? ownConfig : {

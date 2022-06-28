@@ -42,7 +42,7 @@ export default function App() {
     setIsFetching(true);
     try {
       const data = await fetcher(
-        `${process.env.API_URL}/store`
+        `${import.meta.env.VITE_API_URL}/store`
       );
       setIsFetching(false);
       if (data.status != 200) {
@@ -55,6 +55,7 @@ export default function App() {
         setProductsPerm(data.data.products);
       }
     } catch (error) {
+      setIsFetching(false);
       setError("Server error");
     }
   };
@@ -127,7 +128,7 @@ export default function App() {
       }
 
       const data = await fetcher(
-        `${process.env.API_URL}/store`,
+        `${import.meta.env.VITE_API_URL}/store`,
         "post",
         {},
         {
@@ -154,6 +155,7 @@ export default function App() {
         name: "",
       });
     } catch (error) {
+      setIsFetching(false);
       setError("Server error");
     }
   };

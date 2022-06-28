@@ -8,11 +8,12 @@ app.use(express.json());
 
 app.use(
     cors({
-      origin: [process.env.CLIENT_URL],
-      allowedHeaders: ["Content-Type", "Authorization", "Accept"],
-      credentials: true,
+        origin: "https://student-store.vercel.app",
+        allowedHeaders: ["Content-Type", "Accept"],
+        credentials: true,
+        methods: ['GET', 'PUT', 'POST']
     })
-  );
+);
 
 app.get("/", (_req, res) => {
     res.status(200).json({
