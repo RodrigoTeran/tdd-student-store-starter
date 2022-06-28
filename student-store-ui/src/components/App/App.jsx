@@ -44,6 +44,7 @@ export default function App() {
       const data = await fetcher(
         `${import.meta.env.VITE_API_URL}/store`
       );
+      console.log(data)
       setIsFetching(false);
       if (data.status != 200) {
         setError(data.statusText);
