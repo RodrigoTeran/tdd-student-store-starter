@@ -145,5 +145,72 @@
       "price": 999.99
     }
   ],
-  "purchases": []
+  "purchases": [
+    {
+      "id": 1,
+      "name": "Rodrigo Teran",
+      "email": "rodrigoteran@fb.com",
+      "order": [
+        {
+          "itemId": 2,
+          "quantity": 2
+        },
+        {
+          "itemId": 6,
+          "quantity": 2
+        },
+        {
+          "itemId": 11,
+          "quantity": 2
+        }
+      ],
+      "total": 481.74075,
+      "createdAt": "Mon Jun 27 2022 19:47:20 GMT-0700 (Pacific Daylight Time)",
+      "receipt": "Receipt #1, by user: Rodrigo Teran. Total price: $481.74075"
+    },
+    {
+      "id": 2,
+      "name": "Rodrigo",
+      "email": "rodrigo.teranhernandez@gmail.com",
+      "order": [
+        {
+          "itemId": 2,
+          "quantity": 2
+        },
+        {
+          "itemId": 1,
+          "quantity": 2
+        },
+        {
+          "itemId": 10,
+          "quantity": 2
+        }
+      ],
+      "total": 81.519,
+      "createdAt": "Mon Jun 27 2022 20:03:17 GMT-0700 (Pacific Daylight Time)",
+      "receipt": "Receipt #2, by user: Rodrigo. Total price: $81.519"
+    },
+    {
+      "id": 3,
+      "name": "Hi!!",
+      "email": "hi@gmail.com",
+      "order": [
+        {
+          "itemId": 13,
+          "quantity": 2
+        },
+        {
+          "itemId": 10,
+          "quantity": 1
+        },
+        {
+          "itemId": 15,
+          "quantity": 1
+        }
+      ],
+      "total": 212.02987499999998,
+      "createdAt": "Mon Jun 27 2022 20:03:33 GMT-0700 (Pacific Daylight Time)",
+      "receipt": "Receipt #3, by user: Hi!!. Total price: $212.02987499999998"
+    }
+  ]
 }

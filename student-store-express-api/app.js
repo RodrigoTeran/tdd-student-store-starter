@@ -9,7 +9,8 @@ app.use(express.json());
 
 app.use(
     cors({
-        origin: "https://student-store.vercel.app",
+        // origin: "https://student-store.vercel.app",
+        origin: "*",
         allowedHeaders: ["Content-Type", "Accept"],
         credentials: true,
         methods: ['GET', 'PUT', 'POST']
@@ -24,6 +25,7 @@ app.get("/", (_req, res) => {
 
 // Routes
 app.use("/store", require("./routes/store.routes"));
+app.use("/orders", require("./routes/order.routes"));
 
 // Error handlers
 app.use((_req, _res, next) => {

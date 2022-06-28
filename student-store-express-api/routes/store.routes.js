@@ -9,8 +9,4 @@ router.get("/", getProducts);
 router.get("/:productId", getProduct)
 router.post("/", createOrder)
 
-// Stretch
-router.get("/get-orders", getOrders);
-router.get("/get-orders/:orderId", getOrder)
-
 module.exports = router;

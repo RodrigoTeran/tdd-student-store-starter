@@ -2,6 +2,7 @@ import "./Navbar.css";
 import Logo from "../Logo/Logo";
 import { HashLink } from "react-router-hash-link";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const [isOpenResponsiveLinks, setIsOpenResponsiveLinks] = useState(false);
@@ -46,6 +47,14 @@ export default function Navbar() {
         >
           Buy Now
         </HashLink>
+        <Link
+          onClick={() => {
+            setIsOpenResponsiveLinks(false);
+          }}
+          to="/orders"
+        >
+          Orders
+        </Link>
       </div>
       <div
         onClick={() => {
