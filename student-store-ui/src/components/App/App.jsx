@@ -41,6 +41,7 @@ export default function App() {
   const loadData = async () => {
     setIsFetching(true);
     try {
+      console.log(import.meta.env.VITE_API_URL)
       const data = await fetcher(
         `${import.meta.env.VITE_API_URL}/store`
       );
