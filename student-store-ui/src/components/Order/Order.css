@@ -4,6 +4,8 @@
     border-radius: 5px;
     padding: 20px 10px;
     position: relative;
+    cursor: pointer;
+    text-decoration: none;
 }
 .order::before {
     content: "";
@@ -15,4 +17,18 @@
     width: 100%;
     background-color: var(--lavender-300);
     clip-path: polygon(0 0, 100% 0, 100% 3px, 0 3px);
+}
+.order-name {
+    font-size: 1.2rem;
+    color: var(--lavender-500);
+    margin-bottom: 10px;
+}
+.order-email {
+    word-break: break-all;
+    font-size: .9rem;
+    margin-bottom: 10px;
+}
+.order-quantity {
+    font-size: 1rem;
+    color: var(--lavender-500);
 }

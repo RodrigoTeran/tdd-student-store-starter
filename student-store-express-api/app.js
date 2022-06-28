@@ -9,8 +9,7 @@ app.use(express.json());
 
 app.use(
     cors({
-        // origin: "https://student-store.vercel.app",
-        origin: "*",
+        origin: "https://student-store.vercel.app",
         allowedHeaders: ["Content-Type", "Accept"],
         credentials: true,
         methods: ['GET', 'PUT', 'POST']

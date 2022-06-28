@@ -6,6 +6,6 @@ const { getOrder, getOrders } = require("../controllers/order.controller");
 
 // Core
 router.get("/", getOrders);
-router.get("/:orderID", getOrder)
+router.get("/get-order/:orderId", getOrder)
 
 module.exports = router;

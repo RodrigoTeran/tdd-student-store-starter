@@ -9,6 +9,7 @@ export default function ProductCard({
   handleAddItemToCart,
   handleRemoveItemToCart,
   showDescription,
+  showBtns = true
 }) {
   return (
     <div className="product-card">
@@ -23,7 +24,7 @@ export default function ProductCard({
       {showDescription && (
         <div className="product-description">{product.description}</div>
       )}
-      <div className="product-btns">
+      {showBtns && <div className="product-btns">
         <button
           title="Remove item"
           onClick={() => {
@@ -42,7 +43,7 @@ export default function ProductCard({
         >
           +
         </button>
-      </div>
+      </div>}
       {quantity > 0 && (
         <div
           title={`You have ${quantity} ${product.name} in your shopping cart!`}

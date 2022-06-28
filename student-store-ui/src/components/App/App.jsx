@@ -14,6 +14,7 @@ import Home from "../Home/Home";
 import ProductDetail from "../ProductDetail/ProductDetail";
 import NotFound from "../NotFound/NotFound";
 import Orders from "../Orders/Orders";
+import OrderView from "../OrderView/OrderView";
 
 // Fetcher
 import { fetcher } from "../../utils/fetcher";
@@ -231,6 +232,16 @@ export default function App() {
                       path="/orders"
                       element={
                         <Orders />
+                      }
+                    />
+                     <Route
+                      path="/orders/:orderId"
+                      element={
+                        <OrderView
+                          products={productsPerm}
+                          handleAddItemToCart={handleAddItemToCart}
+                          handleRemoveItemToCart={handleRemoveItemToCart}
+                        />
                       }
                     />
                     <Route path="*" element={<NotFound />} />

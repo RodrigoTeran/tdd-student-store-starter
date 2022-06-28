@@ -26,7 +26,7 @@ export default function Orders() {
                 setError(data.statusText);
             } else {
                 // Everything ok
-                setOrders(data.data?.orders || []);
+                setOrders(data.data ?.orders || []);
             }
         } catch (error) {
             setIsLoading(false);
@@ -49,8 +49,6 @@ export default function Orders() {
                     )
                 })}
             </div>
-
-
         </section>
     )
 };
