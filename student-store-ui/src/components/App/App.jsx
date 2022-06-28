@@ -56,6 +56,7 @@ export default function App() {
       }
     } catch (error) {
       setIsFetching(false);
+      console.error(error);
       setError("Server error");
     }
   };
@@ -156,6 +157,7 @@ export default function App() {
       });
     } catch (error) {
       setIsFetching(false);
+      console.error(error);
       setError("Server error");
     }
   };
