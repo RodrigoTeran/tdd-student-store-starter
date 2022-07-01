@@ -10,6 +10,8 @@ import Order from "../Order/Order"
 export default function Orders() {
     const [orders, setOrders] = useState([]);
     const [isLoading, setIsLoading] = useState([]);
+    const [filter, setFilter] = useState("");
+
 
     useEffect(() => {
         fetchOrders();
@@ -35,18 +37,39 @@ export default function Orders() {
         }
     }
 
+    const onChangeInputFilterOrder = (e) => {
+        setFilter(e.target.value);
+    }
+
+    const isInSearch = (orderEmail) => {
+        let isInFilter = false;
+        orderEmail = orderEmail.toLocaleLowerCase();
+        let filterName = filter.toLocaleLowerCase();
+        let n = orderEmail.search(filterName);
+        if (n !== -1) {
+            isInFilter = true;
+        }
+
+        return isInFilter;
+    };
+
     return (
         <section className="orders">
             <h1>
                 Orders
             </h1>
+            <div className="orders-input-container">
+                <input value={filter} onChange={onChangeInputFilterOrder} type="text" placeholder="Filter orders from email" />
+            </div>
             <div className="orders-grid">
                 {orders && orders.map((order, index) => {
-                    return (
-                        <Fragment key={index}>
-                            <Order order={order} />
-                        </Fragment>
-                    )
+                    if (isInSearch(order.email)) {
+                        return (
+                            <Fragment key={index}>
+                                <Order order={order} />
+                            </Fragment>
+                        )
+                    }
                 })}
             </div>
         </section>

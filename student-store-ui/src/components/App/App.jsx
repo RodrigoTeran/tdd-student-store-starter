@@ -29,6 +29,10 @@ export default function App() {
   const [successMsg, setSuccessMsg] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
+  // Receipt
+  const [isReceiptOpen, setIsReceiptOpen] = useState(false);
+  const [receipt, setReceipt] = useState({});
+
   const [shoppingCart, setShoppingCart] = useState([]);
   const [checkoutForm, setCheckoutForm] = useState({
     email: "",
@@ -149,18 +153,27 @@ export default function App() {
       setError("");
       setSuccessMsg("Success!");
 
-      // Empty shopping cart
-      setShoppingCart([]);
-
       // Reset checkoutForm
       setCheckoutForm({
         email: "",
         name: "",
       });
+
+      // Receipt
+      setReceipt({
+        receiptText: data.data.purchase.receipt,
+        shoppingCart
+      });
+
+      setIsReceiptOpen(true);
+
+      // Empty shopping cart
+      setShoppingCart([]);
     } catch (error) {
       setIsFetching(false);
       console.error(error);
       setError("Server error");
+      setSuccessMsg("");
     }
   };
 
@@ -202,6 +215,10 @@ export default function App() {
                   isFetchingCheckoutForm={isFetchingCheckoutForm}
                   error={error}
                   successMsg={successMsg}
+                  isReceiptOpen={isReceiptOpen}
+                  setIsReceiptOpen={setIsReceiptOpen}
+                  receipt={receipt}
+                  setReceipt={setReceipt}
                 />
                 <AnimatePresence exitBeforeEnter>
                   <Routes>
@@ -234,7 +251,7 @@ export default function App() {
                         <Orders />
                       }
                     />
-                     <Route
+                    <Route
                       path="/orders/:orderId"
                       element={
                         <OrderView

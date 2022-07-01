@@ -42,6 +42,7 @@ class Store {
             };
 
             total *= 1.0875;
+            total = Math.round(total * 100) / 100;
 
             const purchase = {
                 id: storage.get("purchases").value().length + 1,

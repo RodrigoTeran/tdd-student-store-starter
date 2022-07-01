@@ -23,3 +23,11 @@
         padding: 0 5px 0 65px;
     }
 }
+.orders-input-container {
+    margin-bottom: 20px;
+}  
+.orders-input-container input[type="text"] {
+        padding: 10px 20px;
+        width: 100%;
+        max-width: 400px;
+}

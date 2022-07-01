@@ -38,3 +38,24 @@
     justify-content: center;
     margin-top: 50px;
 }
+.receipt {
+    width: 100%;
+    padding: 20px;
+}
+.receipt-text {
+    margin-bottom: 20px;
+    display: block;
+    color: var(--lavender-500)   
+}
+.receipt button {
+    background-color: var(--lavender-300);
+    color: var(--white-100);
+    border: none;
+    width: 100%;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color ease-out 300ms;
+}
+.receipt button:hover {
+    background-color: var(--lavender-100);
+}
